@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=3 format=3 uid="uid://bxqrj3sdavb36"]
+
+[ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
+[ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="1_xw77n"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(378, 584)
+
+[node name="Floor2" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(1106, 526)
+
+[node name="Pug" parent="." instance=ExtResource("1_xw77n")]
+position = Vector2(170, 366)
