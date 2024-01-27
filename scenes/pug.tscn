@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bfwtopjmldvdy"]
+[gd_scene load_steps=25 format=3 uid="uid://bfwtopjmldvdy"]
 
 [ext_resource type="Script" path="res://scripts/pug.gd" id="1_ovdqs"]
 [ext_resource type="AudioStream" uid="uid://c2wldy0ajve6k" path="res://Assets/Sounds/LadridoPUGY.wav" id="3_0q130"]
 [ext_resource type="Texture2D" uid="uid://dlxhkbj7tj86h" path="res://Assets/Animations/Idle/reposo.png" id="3_16ubf"]
+[ext_resource type="Texture2D" uid="uid://befqr6biuywtv" path="res://Pelota.png" id="3_ftnhf"]
 [ext_resource type="Texture2D" uid="uid://bt6i1b36j88vt" path="res://Assets/Animations/Walk/0021.png" id="4_wjojw"]
 [ext_resource type="Texture2D" uid="uid://rsy2hkibfxhs" path="res://Assets/Animations/Walk/0022.png" id="5_tuu7l"]
 [ext_resource type="Texture2D" uid="uid://ceffmsqdniw25" path="res://Assets/Animations/Walk/0023.png" id="6_pcige"]
@@ -21,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://bolmmqjrgk7vb" path="res://Assets/Animations/Walk/0036.png" id="19_4oh5i"]
 [ext_resource type="Texture2D" uid="uid://b1hkvl3sg6kpp" path="res://Assets/Animations/Walk/0037.png" id="20_l5qph"]
 [ext_resource type="Texture2D" uid="uid://c0ngluwjb6goa" path="res://Assets/Animations/Walk/0038.png" id="21_1oa16"]
-[ext_resource type="Texture2D" uid="uid://befqr6biuywtv" path="res://Pelota.png" id="3_ftnhf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_32fp3"]
 animations = [{
@@ -94,22 +94,28 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0jdw"]
-radius = 67.0
-height = 198.0
+radius = 43.0
+height = 126.0
 
 [node name="Pug" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_ovdqs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(-2, -2)
+scale = Vector2(0.348148, 0.348148)
 sprite_frames = SubResource("SpriteFrames_32fp3")
 animation = &"walk"
 frame = 2
 frame_progress = 0.295398
 
+[node name="pelota" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(152.234, -31.5958)
+scale = Vector2(0.269282, 0.269282)
+texture = ExtResource("3_ftnhf")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 16)
+position = Vector2(0, 14)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_t0jdw")
 
@@ -142,10 +148,5 @@ one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_0q130")
-
-[node name="pelota" type="Sprite2D" parent="."]
-position = Vector2(37, 11)
-scale = Vector2(0.260417, 0.260417)
-texture = ExtResource("3_ftnhf")
 
 [connection signal="timeout" from="MessageCooldown" to="." method="_on_message_cooldown_timeout"]
