@@ -1,25 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=4 format=3 uid="uid://bxqrj3sdavb36"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_04sp3"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
 [ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="1_xw77n"]
-[ext_resource type="PackedScene" uid="uid://wglf1mlb7dta" path="res://scenes/box.tscn" id="3_52ue2"]
+[ext_resource type="PackedScene" uid="uid://dxoxf2ojgbvwu" path="res://scenes/persiana.tscn" id="3_ialmr"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_04sp3")
 
 [node name="Floor" parent="." instance=ExtResource("1_687gb")]
 position = Vector2(378, 584)
 
 [node name="Floor2" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(1106, 526)
+position = Vector2(1129, 584)
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(845, 337)
+position = Vector2(170, 366)
 
-[node name="Box" parent="." instance=ExtResource("3_52ue2")]
-position = Vector2(255, 316)
-gravity_scale = 1.0
-
-[connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
-[connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
+[node name="StaticBody2D" parent="." instance=ExtResource("3_ialmr")]
+position = Vector2(766, 301)
+scale = Vector2(1.40905, 1.40905)

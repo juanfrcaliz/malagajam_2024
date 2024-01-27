@@ -34,12 +34,6 @@ ui_right={
 ]
 }
 
-[layer_names]
-
-2d_physics/layer_1="caja"
-2d_physics/layer_2="pug"
-2d_physics/layer_3="items"
-
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
