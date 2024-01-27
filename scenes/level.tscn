@@ -32,7 +32,7 @@ rotation = 1.5708
 visible = false
 position = Vector2(1422, 174)
 rotation = 1.5708
-collision_layer = 0
+collision_layer = 1
 
 [node name="hab_Detras" type="Sprite2D" parent="."]
 position = Vector2(573, 107)
