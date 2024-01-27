@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+var can_flip : bool = true
+
 var seesaw_pos: String = "top"
 
 func _ready():
@@ -23,12 +25,17 @@ func _on_top_switch_body_entered(body):
 
 
 func _on_left_switch_body_entered(body):
-	if seesaw_pos == "left":
+	if seesaw_pos == "left" && can_flip:
+		print(body.velocity)
 		get_node("seesaw_right").hide()
 		get_node("seesaw_left").show()
 		get_node("seesaw_collision_right").set_collision_layer_value(1, 0)
 		get_node("seesaw_collision_left").set_collision_layer_value(1, 1)
 		seesaw_pos = "right"
+	if body.velocity.y > 20 && not can_flip:
+		#animacion final
+		print('caca')
+		can_flip = true
 
 
 func _on_right_switch_body_entered(body):
@@ -38,3 +45,15 @@ func _on_right_switch_body_entered(body):
 		get_node("seesaw_collision_left").set_collision_layer_value(1, 0)
 		get_node("seesaw_collision_right").set_collision_layer_value(1, 1)
 		seesaw_pos = "left"
+
+
+
+func _on_detect_ball_body_entered(body):
+	if body.name == "Esfera":
+		can_flip = false
+	
+
+
+func _on_detect_ball_body_exited(body):
+	if body.name == "Esfera":
+		can_flip = true
