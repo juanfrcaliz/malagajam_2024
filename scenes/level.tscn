@@ -1,20 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=7 format=3 uid="uid://bxqrj3sdavb36"]
 
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
 [ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="1_xw77n"]
-[ext_resource type="PackedScene" uid="uid://dxoxf2ojgbvwu" path="res://scenes/persiana.tscn" id="3_ialmr"]
+[ext_resource type="Texture2D" uid="uid://c02m5hmwbp8di" path="res://Assets/Habitacion/detras.png" id="2_q6j1k"]
+[ext_resource type="Texture2D" uid="uid://c8jeusi50xvv3" path="res://Assets/Habitacion/delante.png" id="3_mnwwm"]
+[ext_resource type="PackedScene" uid="uid://48he5yuyc6fl" path="res://scenes/box.tscn" id="5_hnovt"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_7mcvw")
 
 [node name="Floor" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(378, 584)
+position = Vector2(532, 586)
+scale = Vector2(2.42258, 1)
 
 [node name="Floor2" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(1129, 584)
+position = Vector2(-88, 483)
+scale = Vector2(0.207199, 3.51515)
+
+[node name="Floor3" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(-190, 202)
+rotation = 1.5708
+
+[node name="Floor4" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(598, 386)
+scale = Vector2(0.765232, 2.63929)
+
+[node name="puerta_salon" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(1422, 174)
+rotation = 1.5708
+
+[node name="Detras" type="Sprite2D" parent="."]
+position = Vector2(573, 107)
+texture = ExtResource("2_q6j1k")
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(170, 366)
+position = Vector2(-87, 351)
+scale = Vector2(0.788682, 0.788682)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("3_ialmr")]
-position = Vector2(766, 301)
-scale = Vector2(1.40905, 1.40905)
+[node name="Box" parent="." instance=ExtResource("5_hnovt")]
+position = Vector2(438, 567)
+
+[node name="Delante" type="Sprite2D" parent="."]
+position = Vector2(572, 106)
+texture = ExtResource("3_mnwwm")
+
+[connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
+[connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
