@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8akrrjlh40bl"]
+
+[ext_resource type="Texture2D" path="res://Balancin.png" id="1_7ar5u"]
+[ext_resource type="Texture2D" path="res://Balancin2.png" id="2_w7kki"]
+[ext_resource type="Script" path="res://scripts/balancin.gd" id="3_mdaor"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qcewv"]
+a = Vector2(1, -1)
+b = Vector2(44, -22)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_s42iw"]
+a = Vector2(0, -22)
+b = Vector2(44, -1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sp45"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpqiy"]
+size = Vector2(7, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwa11"]
+radius = 3.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("3_mdaor")
+
+[node name="seesaw_left" type="Sprite2D" parent="."]
+position = Vector2(22, -11)
+scale = Vector2(0.14045, 0.14045)
+texture = ExtResource("1_7ar5u")
+
+[node name="seesaw_right" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(22, -11)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_w7kki")
+
+[node name="seesaw_collision_left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seesaw_collision_left"]
+position = Vector2(-1, 0)
+shape = SubResource("SegmentShape2D_qcewv")
+
+[node name="seesaw_collision_right" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seesaw_collision_right"]
+shape = SubResource("SegmentShape2D_s42iw")
+
+[node name="pivot" type="CollisionShape2D" parent="."]
+position = Vector2(22, -6)
+shape = SubResource("CircleShape2D_3sp45")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="left_switch" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_switch"]
+position = Vector2(4, -26)
+shape = SubResource("RectangleShape2D_tpqiy")
+
+[node name="right_switch" type="Area2D" parent="."]
+position = Vector2(-29, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_switch"]
+position = Vector2(65, -26)
+shape = SubResource("RectangleShape2D_tpqiy")
+
+[node name="detect_ball" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_ball"]
+position = Vector2(38, -6)
+shape = SubResource("CircleShape2D_jwa11")
+
+[connection signal="area_entered" from="left_switch" to="left_switch" method="_on_left_area_entered"]
+[connection signal="body_entered" from="left_switch" to="." method="_on_left_switch_body_entered"]
+[connection signal="area_entered" from="right_switch" to="left_switch" method="_on_right_area_entered"]
+[connection signal="body_entered" from="right_switch" to="." method="_on_right_switch_body_entered"]
+[connection signal="body_entered" from="detect_ball" to="left_switch" method="_on_area_2d_body_entered"]
