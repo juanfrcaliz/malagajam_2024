@@ -6,6 +6,8 @@
 size = Vector2(750, 46)
 
 [node name="Floor" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5.82813, 0.359375)

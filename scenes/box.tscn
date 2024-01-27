@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://wglf1mlb7dta"]
+
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_3nhd0"]
+[ext_resource type="Texture2D" uid="uid://b1vwatdwt1s3f" path="res://box.png" id="1_tfhe5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ssbou"]
+
+[node name="Box" type="RigidBody2D"]
+scale = Vector2(1.00121, 1.00639)
+collision_layer = 2
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_ssbou")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_3nhd0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(345, 195, 345, 220, 285, 251, 227, 218, 228, 191, 227, 218, 285, 247, 341, 216)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(292, 203)
+scale = Vector2(0.326172, 0.326172)
+texture = ExtResource("1_tfhe5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(116.51, 16.8922)
+polygon = PackedVector2Array(1.9717, 11.5881, 1.98027, 12.8822, 2.44319, 14.7646, 2.44319, 14.7646, 2.93183, 13.0587, 2.9404, 11.1175, 2.46034, 13.1175)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
