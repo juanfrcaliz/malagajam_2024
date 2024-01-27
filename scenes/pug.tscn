@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfwtopjmldvdy"]
+[gd_scene load_steps=5 format=3 uid="uid://bfwtopjmldvdy"]
 
 [ext_resource type="Texture2D" uid="uid://c6cbk34614gg0" path="res://icon.svg" id="1_nbjae"]
 [ext_resource type="Script" path="res://scripts/pug.gd" id="1_ovdqs"]
+[ext_resource type="FontFile" uid="uid://ltmlymqsv2xn" path="res://Assets/Fonts/SingleDay-Regular.ttf" id="3_g52op"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_687dv"]
 radius = 64.0312
@@ -25,10 +26,10 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -71.0
-offset_top = -100.0
-offset_right = 71.0
-offset_bottom = -77.0
+offset_left = -138.0
+offset_top = -118.0
+offset_right = 140.0
+offset_bottom = -73.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -36,6 +37,8 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_g52op")
+theme_override_font_sizes/font_size = 34
 text = "Press A/D to move"
 horizontal_alignment = 1
 
