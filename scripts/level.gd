@@ -25,7 +25,7 @@ func transitionLevel():
 	if level_number == 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
-		$AudioStreamPlayer2D.play()
+		$ToySound.play()
 		level_number += 1
 
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8akrrjlh40bl"]
+[gd_scene load_steps=11 format=3 uid="uid://c8akrrjlh40bl"]
 
 [ext_resource type="Texture2D" uid="uid://cq4dklxryynaf" path="res://Assets/Cocina/tabla.png" id="2_k58ov"]
+[ext_resource type="Texture2D" uid="uid://r87ilr13ewq8" path="res://Assets/Cocina/rollito.png" id="3_8bnf4"]
 [ext_resource type="Script" path="res://scripts/balancin.gd" id="3_mdaor"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4nhxp"]
@@ -24,7 +25,7 @@ size = Vector2(7, 7)
 radius = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o13xq"]
-size = Vector2(5, 12.5)
+size = Vector2(5, 20.5)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("3_mdaor")
@@ -94,8 +95,13 @@ shape = SubResource("CircleShape2D_jwa11")
 [node name="top_switch" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="top_switch"]
-position = Vector2(-7.5, -41.25)
+position = Vector2(-6.5, -37.25)
 shape = SubResource("RectangleShape2D_o13xq")
+
+[node name="Rollito" type="Sprite2D" parent="."]
+position = Vector2(25, -6)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("3_8bnf4")
 
 [connection signal="area_entered" from="left_switch" to="left_switch" method="_on_left_area_entered"]
 [connection signal="body_entered" from="left_switch" to="." method="_on_left_switch_body_entered"]

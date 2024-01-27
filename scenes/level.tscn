@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=13 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://48he5yuyc6fl" path="res://scenes/box.tscn" id="5_hnovt"]
 [ext_resource type="Texture2D" uid="uid://t0pxbd07khio" path="res://Assets/Cocina/cocina fondo.png" id="7_pva7j"]
 [ext_resource type="Texture2D" uid="uid://ciqk4kcvh8pwd" path="res://Assets/Cocina/cocina medio.png" id="8_7ecnt"]
+[ext_resource type="Texture2D" uid="uid://b012o1ctp1sf3" path="res://Assets/Cocina/cocina frente.png" id="12_427wr"]
 [ext_resource type="AudioStream" uid="uid://cvf5rlnxiyl74" path="res://Assets/Sounds/Toy Puggy.wav" id="12_lffml"]
 [ext_resource type="Texture2D" uid="uid://dti3owq87yr8e" path="res://Assets/Cocina/caja de disfraces.png" id="12_nwvpc"]
 [ext_resource type="PackedScene" uid="uid://c8akrrjlh40bl" path="res://scenes/balancin.tscn" id="12_pbrj0"]
@@ -15,23 +16,18 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7mcvw")
 
-[node name="Floor" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(532, 586)
-scale = Vector2(2.42258, 1)
-
 [node name="Floor2" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(-88, 483)
 scale = Vector2(0.207199, 3.51515)
 
 [node name="Floor3" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(-190, 202)
 rotation = 1.5708
 
-[node name="Floor4" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(598, 386)
-scale = Vector2(0.765232, 2.63929)
-
 [node name="puerta_salon" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(1422, 174)
 rotation = 1.5708
 collision_layer = 0
@@ -42,38 +38,28 @@ texture = ExtResource("2_q6j1k")
 metadata/_edit_lock_ = true
 
 [node name="CocinaFondo" type="Sprite2D" parent="."]
-position = Vector2(2400, 104)
+position = Vector2(2400, 123)
 texture = ExtResource("7_pva7j")
-metadata/_edit_lock_ = true
 
 [node name="hab_Detras2" type="Sprite2D" parent="."]
 position = Vector2(573, 107)
 texture = ExtResource("2_q6j1k")
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(1924, 118)
+position = Vector2(-81.9998, 343)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
 position = Vector2(438, 567)
 
 [node name="CocinaMedio" type="Sprite2D" parent="."]
-position = Vector2(2400, 105)
+position = Vector2(2400, 116)
 texture = ExtResource("8_7ecnt")
-metadata/_edit_lock_ = true
 
 [node name="hab_Delante" type="Sprite2D" parent="."]
 position = Vector2(572, 106)
 texture = ExtResource("3_mnwwm")
 metadata/_edit_lock_ = true
-
-[node name="Floor5" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(2237, 586)
-scale = Vector2(3, 1)
-
-[node name="Floor6" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(1834, 372)
-scale = Vector2(0.26632, -0.629808)
 
 [node name="CajaDeDisfraces" type="Sprite2D" parent="."]
 position = Vector2(2981, -283)
@@ -93,11 +79,48 @@ color = Color(0, 0, 0, 0)
 stream = ExtResource("12_lffml")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("12_pbrj0")]
-position = Vector2(2618, 559)
+position = Vector2(2509, 577)
 scale = Vector2(10, 10)
 
+[node name="CocinaFrente" type="Sprite2D" parent="."]
+position = Vector2(1633.11, 533.1)
+scale = Vector2(0.642718, 0.642718)
+texture = ExtResource("12_427wr")
+
+[node name="Floor" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(532, 586)
+scale = Vector2(2.42258, 1)
+
+[node name="Floor4" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(598, 386)
+scale = Vector2(0.765232, 2.63929)
+
+[node name="Floor5" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(2237, 587)
+scale = Vector2(3, 1)
+
+[node name="Floor6" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(1831, 418)
+scale = Vector2(0.2, -0.474)
+
 [node name="Floor7" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(2151, 231)
+visible = false
+position = Vector2(2190, 327)
+scale = Vector2(0.63, 1)
+
+[node name="Floor8" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(1633, 538)
+scale = Vector2(0.127507, 1.27507)
+
+[node name="Floor9" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(3360, 285)
+rotation = 1.5708
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
