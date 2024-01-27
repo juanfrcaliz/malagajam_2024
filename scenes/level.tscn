@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=12 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://48he5yuyc6fl" path="res://scenes/box.tscn" id="5_hnovt"]
 [ext_resource type="Texture2D" uid="uid://t0pxbd07khio" path="res://Assets/Cocina/cocina fondo.png" id="7_pva7j"]
 [ext_resource type="Texture2D" uid="uid://ciqk4kcvh8pwd" path="res://Assets/Cocina/cocina medio.png" id="8_7ecnt"]
-[ext_resource type="Texture2D" uid="uid://c5a6jpbdu2c8c" path="res://Assets/Cocina/esfera.png" id="10_40r50"]
-[ext_resource type="Texture2D" uid="uid://cq4dklxryynaf" path="res://Assets/Cocina/tabla.png" id="11_fcyq2"]
 [ext_resource type="AudioStream" uid="uid://cvf5rlnxiyl74" path="res://Assets/Sounds/Toy Puggy.wav" id="12_lffml"]
 [ext_resource type="Texture2D" uid="uid://dti3owq87yr8e" path="res://Assets/Cocina/caja de disfraces.png" id="12_nwvpc"]
 [ext_resource type="PackedScene" uid="uid://c8akrrjlh40bl" path="res://scenes/balancin.tscn" id="12_pbrj0"]
@@ -48,7 +46,7 @@ position = Vector2(2400, 104)
 texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
-[node name="hab_Detras" type="Sprite2D" parent="."]
+[node name="hab_Detras2" type="Sprite2D" parent="."]
 position = Vector2(573, 107)
 texture = ExtResource("2_q6j1k")
 
@@ -91,10 +89,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_6463a")
 [node name="ToySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_lffml")
+
 [node name="StaticBody2D" parent="." instance=ExtResource("12_pbrj0")]
 position = Vector2(2618, 559)
 scale = Vector2(10, 10)
@@ -104,4 +101,3 @@ position = Vector2(2151, 231)
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
