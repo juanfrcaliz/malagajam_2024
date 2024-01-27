@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://wglf1mlb7dta"]
+[gd_scene load_steps=4 format=3 uid="uid://48he5yuyc6fl"]
 
 [ext_resource type="Script" path="res://scripts/box.gd" id="1_3nhd0"]
-[ext_resource type="Texture2D" uid="uid://b1vwatdwt1s3f" path="res://box.png" id="1_tfhe5"]
+[ext_resource type="Texture2D" uid="uid://d4nb3i0qcy6cr" path="res://Assets/Habitacion/caja roja.png" id="2_c3duj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ssbou"]
 
@@ -14,19 +14,21 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_3nhd0")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(345, 195, 345, 220, 285, 251, 227, 218, 228, 191, 227, 218, 285, 247, 341, 216)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(292, 203)
-scale = Vector2(0.326172, 0.326172)
-texture = ExtResource("1_tfhe5")
+position = Vector2(56.9311, -59.619)
+scale = Vector2(0.542201, 0.542201)
+texture = ExtResource("2_c3duj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-257.892, -238.329)
+polygon = PackedVector2Array(374.751, 153.869, 374.751, 237.336, 303.633, 237.482, 258.687, 237.482, 258.891, 154.863, 268.879, 228.393, 293.849, 229.387, 364.763, 228.393)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-257.892, -238.329)
 scale = Vector2(116.51, 16.8922)
-polygon = PackedVector2Array(1.9717, 11.5881, 1.98027, 12.8822, 2.44319, 14.7646, 2.44319, 14.7646, 2.93183, 13.0587, 2.9404, 11.1175, 2.46034, 13.1175)
+polygon = PackedVector2Array(2.46208, 12.403, 2.27348, 9.52065, 2.31635, 13.403, 2.70211, 13.403, 3.08788, 13.4618, 3.15646, 9.75594, 2.74498, 12.1677)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
