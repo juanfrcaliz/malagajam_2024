@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	show_messages('Press A / D to move')
+	get_node("pelota").hide()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -46,6 +47,9 @@ func bark():
 
 func change_mobility(state):
 	can_push = state
+	
+func show_ball():
+	$pelota.show()
 	
 func show_messages(message):
 	$MarginContainer/Label.text = message

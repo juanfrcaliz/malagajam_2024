@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfwtopjmldvdy"]
+[gd_scene load_steps=5 format=3 uid="uid://bfwtopjmldvdy"]
 
 [ext_resource type="Texture2D" uid="uid://c6cbk34614gg0" path="res://icon.svg" id="1_nbjae"]
 [ext_resource type="Script" path="res://scripts/pug.gd" id="1_ovdqs"]
+[ext_resource type="Texture2D" uid="uid://befqr6biuywtv" path="res://Pelota.png" id="3_ftnhf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_687dv"]
 radius = 64.0312
@@ -44,5 +45,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="pelota" type="Sprite2D" parent="."]
+position = Vector2(37, 11)
+scale = Vector2(0.260417, 0.260417)
+texture = ExtResource("3_ftnhf")
 
 [connection signal="timeout" from="MessageCooldown" to="." method="_on_message_cooldown_timeout"]

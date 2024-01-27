@@ -13,6 +13,7 @@ func _process(delta):
 
 func _on_box_dog_entered():
 	$Pug.change_mobility(false)
+	$Pug.show_ball()
 
 
 func _on_box_dog_exited():
