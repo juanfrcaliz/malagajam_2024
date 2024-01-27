@@ -22,14 +22,18 @@ func _on_box_dog_exited():
 	$Pug.change_mobility(true)
 	
 func transitionLevel():
+	print(level_number)
 	if level_number == 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
-		$ToySound.play()
-		level_number += 1
+		tween.connect("finished", on_tween_finished)
+		
 
+func on_tween_finished():
+	#play right sound
+	level_number += 1
 
-func _on_audio_stream_player_2d_finished():
+func _on_toy_sound_finished():
 	print('terminao')
-	var tween = get_tree().create_tween()
-	tween.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
