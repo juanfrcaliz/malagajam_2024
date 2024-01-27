@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	show_messages('Press A / D to move')
+	get_node("AnimatedSprite2D/pelota").hide()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -24,8 +25,15 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
+		if velocity.x > 0:
+			$AnimatedSprite2D.flip_h = 0
+		else:
+			$AnimatedSprite2D.flip_h = 1
+		
+		$AnimatedSprite2D.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$AnimatedSprite2D.play("idle")
 
 	move_and_slide()
 
@@ -46,6 +54,9 @@ func bark():
 
 func change_mobility(state):
 	can_push = state
+	
+func show_ball():
+	$AnimatedSprite2D/pelota.show()
 	
 func show_messages(message):
 	$MarginContainer/Label.text = message
