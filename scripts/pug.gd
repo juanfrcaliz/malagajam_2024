@@ -13,7 +13,6 @@ signal interact
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	show_messages('Press A / D to move')
 	get_node("Node2D/pelota").hide()
 
 func _physics_process(delta):
@@ -73,15 +72,3 @@ func change_mobility(state):
 func show_ball():
 	$Node2D/pelota.show()
 	
-func show_messages(message):
-	$MarginContainer/Label.text = message
-	var tween = get_tree().create_tween()
-	tween.tween_property($MarginContainer, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE)
-	$MessageCooldown.start()
-	
-func hide_message():
-	var tween = get_tree().create_tween()
-	tween.tween_property($MarginContainer, "modulate:a", 0, 1).set_trans(Tween.TRANS_SINE)
-	
-func _on_message_cooldown_timeout():
-	hide_message()

@@ -1,14 +1,30 @@
 extends Node
 
 var level_number = 0
+var tutorial_texts = ["Press A / D to move", "Press R to bark", "Press Space to jump"]
+var tutorial_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	show_message(tutorial_texts[0])
+	tutorial_index += 1
 
+func _physics_process(delta):
+	$MarginContainer2.position = Vector2($Pug.position.x - 120, $Pug.position.y - 100)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func show_message(message):
+	$MarginContainer2/Label.text = message
+	var tween = get_tree().create_tween()
+	tween.tween_property($MarginContainer2, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE)
+	$TutorialCooldown.start()
+	
+func hide_message():
+	var tween = get_tree().create_tween()
+	tween.tween_property($MarginContainer2, "modulate:a", 0, 1).set_trans(Tween.TRANS_SINE)
+	tween.connect("finished", on_hide_message_ended)
 
 
 func _on_box_dog_entered():
@@ -37,3 +53,12 @@ func _on_toy_sound_finished():
 	print('terminao')
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
+
+func on_hide_message_ended():
+	if tutorial_index < tutorial_texts.size():
+		show_message(tutorial_texts[tutorial_index])
+		tutorial_index += 1
+
+func _on_tutorial_cooldown_timeout():
+	hide_message()
+	

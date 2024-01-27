@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=15 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://48he5yuyc6fl" path="res://scenes/box.tscn" id="5_hnovt"]
 [ext_resource type="Texture2D" uid="uid://t0pxbd07khio" path="res://Assets/Cocina/cocina fondo.png" id="7_pva7j"]
 [ext_resource type="Texture2D" uid="uid://ciqk4kcvh8pwd" path="res://Assets/Cocina/cocina medio.png" id="8_7ecnt"]
+[ext_resource type="FontFile" uid="uid://ltmlymqsv2xn" path="res://Assets/Fonts/SingleDay-Regular.ttf" id="11_gt4pf"]
 [ext_resource type="Texture2D" uid="uid://b012o1ctp1sf3" path="res://Assets/Cocina/cocina frente.png" id="12_427wr"]
 [ext_resource type="AudioStream" uid="uid://cvf5rlnxiyl74" path="res://Assets/Sounds/Toy Puggy.wav" id="12_lffml"]
 [ext_resource type="Texture2D" uid="uid://dti3owq87yr8e" path="res://Assets/Cocina/caja de disfraces.png" id="12_nwvpc"]
@@ -39,6 +40,7 @@ texture = ExtResource("2_q6j1k")
 metadata/_edit_lock_ = true
 
 [node name="hab_Detras2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(573, 107)
 texture = ExtResource("2_q6j1k")
 
@@ -68,6 +70,29 @@ metadata/_edit_lock_ = true
 [node name="CajaDeDisfraces" type="Sprite2D" parent="."]
 position = Vector2(2981, -283)
 texture = ExtResource("12_nwvpc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_gt4pf")
+theme_override_font_sizes/font_size = 34
+text = "hola"
+horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -127,6 +152,11 @@ visible = false
 position = Vector2(3360, 285)
 rotation = 1.5708
 
+[node name="TutorialCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
 [connection signal="finished" from="ToySound" to="." method="_on_toy_sound_finished"]
+[connection signal="timeout" from="TutorialCooldown" to="." method="_on_tutorial_cooldown_timeout"]
