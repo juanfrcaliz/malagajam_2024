@@ -1,10 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bfwtopjmldvdy"]
+[gd_scene load_steps=26 format=3 uid="uid://bfwtopjmldvdy"]
 
 [ext_resource type="Script" path="res://scripts/pug.gd" id="1_ovdqs"]
-[ext_resource type="FontFile" uid="uid://ltmlymqsv2xn" path="res://Assets/Fonts/SingleDay-Regular.ttf" id="3_g52op"]
 [ext_resource type="AudioStream" uid="uid://c2wldy0ajve6k" path="res://Assets/Sounds/LadridoPUGY.wav" id="3_0q130"]
 [ext_resource type="Texture2D" uid="uid://dlxhkbj7tj86h" path="res://Assets/Animations/Idle/reposo.png" id="3_16ubf"]
 [ext_resource type="Texture2D" uid="uid://befqr6biuywtv" path="res://Pelota.png" id="3_ftnhf"]
+[ext_resource type="FontFile" uid="uid://ltmlymqsv2xn" path="res://Assets/Fonts/SingleDay-Regular.ttf" id="3_g52op"]
 [ext_resource type="Texture2D" uid="uid://bt6i1b36j88vt" path="res://Assets/Animations/Walk/0021.png" id="4_wjojw"]
 [ext_resource type="Texture2D" uid="uid://rsy2hkibfxhs" path="res://Assets/Animations/Walk/0022.png" id="5_tuu7l"]
 [ext_resource type="Texture2D" uid="uid://ceffmsqdniw25" path="res://Assets/Animations/Walk/0023.png" id="6_pcige"]

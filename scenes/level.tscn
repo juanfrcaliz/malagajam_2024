@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=12 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c02m5hmwbp8di" path="res://Assets/Habitacion/detras.png" id="2_q6j1k"]
 [ext_resource type="Texture2D" uid="uid://c8jeusi50xvv3" path="res://Assets/Habitacion/delante.png" id="3_mnwwm"]
 [ext_resource type="PackedScene" uid="uid://48he5yuyc6fl" path="res://scenes/box.tscn" id="5_hnovt"]
+[ext_resource type="Texture2D" uid="uid://t0pxbd07khio" path="res://Assets/Cocina/cocina fondo.png" id="7_pva7j"]
+[ext_resource type="Texture2D" uid="uid://ciqk4kcvh8pwd" path="res://Assets/Cocina/cocina medio.png" id="8_7ecnt"]
+[ext_resource type="Texture2D" uid="uid://c5a6jpbdu2c8c" path="res://Assets/Cocina/esfera.png" id="10_40r50"]
+[ext_resource type="Texture2D" uid="uid://cq4dklxryynaf" path="res://Assets/Cocina/tabla.png" id="11_fcyq2"]
+[ext_resource type="Texture2D" uid="uid://dti3owq87yr8e" path="res://Assets/Cocina/caja de disfraces.png" id="12_nwvpc"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7mcvw")
@@ -26,24 +31,53 @@ rotation = 1.5708
 position = Vector2(598, 386)
 scale = Vector2(0.765232, 2.63929)
 
+[node name="Floor5" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(2237, 586)
+scale = Vector2(3, 1)
+
 [node name="puerta_salon" parent="." instance=ExtResource("1_687gb")]
 position = Vector2(1422, 174)
 rotation = 1.5708
+collision_layer = 0
 
-[node name="Detras" type="Sprite2D" parent="."]
+[node name="hab_Detras" type="Sprite2D" parent="."]
 position = Vector2(573, 107)
 texture = ExtResource("2_q6j1k")
 
+[node name="CocinaFondo" type="Sprite2D" parent="."]
+position = Vector2(2400, 104)
+texture = ExtResource("7_pva7j")
+
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-87, 351)
+position = Vector2(-45.9998, 359)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
 position = Vector2(438, 567)
 
-[node name="Delante" type="Sprite2D" parent="."]
+[node name="CocinaMedio" type="Sprite2D" parent="."]
+position = Vector2(2400, 105)
+texture = ExtResource("8_7ecnt")
+
+[node name="hab_Delante" type="Sprite2D" parent="."]
 position = Vector2(572, 106)
 texture = ExtResource("3_mnwwm")
+
+[node name="Esfera" type="Sprite2D" parent="."]
+position = Vector2(3192, 382)
+texture = ExtResource("10_40r50")
+
+[node name="Tabla" type="Sprite2D" parent="."]
+position = Vector2(2604, 404)
+texture = ExtResource("11_fcyq2")
+
+[node name="Floor6" parent="." instance=ExtResource("1_687gb")]
+position = Vector2(1834, 372)
+scale = Vector2(0.26632, -0.629808)
+
+[node name="CajaDeDisfraces" type="Sprite2D" parent="."]
+position = Vector2(2981, -283)
+texture = ExtResource("12_nwvpc")
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8akrrjlh40bl"]
+[gd_scene load_steps=8 format=3 uid="uid://c8akrrjlh40bl"]
 
-[ext_resource type="Texture2D" path="res://Balancin.png" id="1_7ar5u"]
-[ext_resource type="Texture2D" path="res://Balancin2.png" id="2_w7kki"]
+[ext_resource type="Texture2D" uid="uid://cq4dklxryynaf" path="res://Assets/Cocina/tabla.png" id="2_k58ov"]
 [ext_resource type="Script" path="res://scripts/balancin.gd" id="3_mdaor"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qcewv"]
@@ -24,16 +23,20 @@ radius = 3.0
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("3_mdaor")
 
+[node name="Tabla" type="Sprite2D" parent="."]
+position = Vector2(21, -11)
+rotation = -1.11352
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_k58ov")
+
 [node name="seesaw_left" type="Sprite2D" parent="."]
 position = Vector2(22, -11)
 scale = Vector2(0.14045, 0.14045)
-texture = ExtResource("1_7ar5u")
 
 [node name="seesaw_right" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(22, -11)
 scale = Vector2(0.14, 0.14)
-texture = ExtResource("2_w7kki")
 
 [node name="seesaw_collision_left" type="StaticBody2D" parent="."]
 
