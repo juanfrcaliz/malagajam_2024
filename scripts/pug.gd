@@ -9,6 +9,9 @@ var can_push = true
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	show_messages('hola bb')
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -32,3 +35,18 @@ func _physics_process(delta):
 
 func change_mobility(state):
 	can_push = state
+	
+func show_messages(message):
+	$MarginContainer/Label.text = message
+	var tween = get_tree().create_tween()
+	tween.tween_property($MarginContainer, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE)
+	$MessageCooldown.start()
+	
+func hide_message():
+	var tween = get_tree().create_tween()
+	tween.tween_property($MarginContainer, "modulate:a", 0, 1).set_trans(Tween.TRANS_SINE)
+	
+
+
+func _on_message_cooldown_timeout():
+	hide_message()
