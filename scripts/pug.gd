@@ -10,7 +10,7 @@ var can_push = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	show_messages('hola bb')
+	show_messages('Press A / D to move')
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -46,7 +46,5 @@ func hide_message():
 	var tween = get_tree().create_tween()
 	tween.tween_property($MarginContainer, "modulate:a", 0, 1).set_trans(Tween.TRANS_SINE)
 	
-
-
 func _on_message_cooldown_timeout():
 	hide_message()

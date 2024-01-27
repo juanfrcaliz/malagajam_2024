@@ -25,14 +25,17 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -67.0
-offset_top = -81.0
-offset_right = 75.0
-offset_bottom = -58.0
+offset_left = -71.0
+offset_top = -100.0
+offset_right = 71.0
+offset_bottom = -77.0
 grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Press A/D to move"
 horizontal_alignment = 1
 
