@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://v4vx20xtmn2x"
+path="res://.godot/imported/Andar pug_mezcla.wav-ab9ee742a347991ac6cb07e1b5d5202a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Andar pug_mezcla.wav"
+dest_files=["res://.godot/imported/Andar pug_mezcla.wav-ab9ee742a347991ac6cb07e1b5d5202a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

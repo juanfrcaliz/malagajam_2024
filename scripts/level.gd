@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_box_dog_entered():
+	$ToySound.play()
 	$Pug.change_mobility(false)
 	$Pug.show_ball()
 
