@@ -6,11 +6,13 @@ const JUMP_VELOCITY = -400.0
 const PUSH_FORCE = 10.0
 var can_push = true
 
+signal interact
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	show_messages('hola bb')
+	show_messages('Press A / D to move')
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -32,6 +34,15 @@ func _physics_process(delta):
 			var c = get_slide_collision(i)
 			if c.get_collider() is RigidBody2D:
 				c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
+				
+	if Input.is_action_just_pressed("interact"):
+		interact.emit()
+		
+	if Input.is_action_just_pressed("bark"):
+		bark()
+		
+func bark():
+	$AudioStreamPlayer2D.play()
 
 func change_mobility(state):
 	can_push = state
@@ -46,7 +57,5 @@ func hide_message():
 	var tween = get_tree().create_tween()
 	tween.tween_property($MarginContainer, "modulate:a", 0, 1).set_trans(Tween.TRANS_SINE)
 	
-
-
 func _on_message_cooldown_timeout():
 	hide_message()
