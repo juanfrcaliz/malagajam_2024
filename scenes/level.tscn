@@ -124,3 +124,4 @@ rotation = 1.5708
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
+[connection signal="finished" from="ToySound" to="." method="_on_toy_sound_finished"]
