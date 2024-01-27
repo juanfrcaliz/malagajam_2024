@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=14 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cvf5rlnxiyl74" path="res://Assets/Sounds/Toy Puggy.wav" id="12_lffml"]
 [ext_resource type="Texture2D" uid="uid://dti3owq87yr8e" path="res://Assets/Cocina/caja de disfraces.png" id="12_nwvpc"]
 [ext_resource type="PackedScene" uid="uid://c8akrrjlh40bl" path="res://scenes/balancin.tscn" id="12_pbrj0"]
+[ext_resource type="PackedScene" uid="uid://bity71mfcms5c" path="res://scenes/esfera.tscn" id="13_37575"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7mcvw")
@@ -46,11 +47,14 @@ position = Vector2(573, 107)
 texture = ExtResource("2_q6j1k")
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-81.9998, 343)
+position = Vector2(-76.9995, 347)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
 position = Vector2(438, 567)
+
+[node name="Esfera" parent="." instance=ExtResource("13_37575")]
+position = Vector2(3091, 106)
 
 [node name="CocinaMedio" type="Sprite2D" parent="."]
 position = Vector2(2400, 116)
@@ -74,6 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="ToySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_lffml")
