@@ -30,10 +30,13 @@ func _physics_process(delta):
 		else:
 			$Node2D.scale.x = -1
 			
-		
+		if !$WalkAudio.playing:
+			$WalkAudio.play()
+			
 		%AnimatedSprite2D.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$WalkAudio.stop()
 		%AnimatedSprite2D.play("idle")
 
 	move_and_slide()
@@ -51,7 +54,8 @@ func _physics_process(delta):
 		bark()
 		
 func bark():
-	$AudioStreamPlayer2D.play()
+	if !$BarkAudio.playing:
+		$BarkAudio.play()
 
 func change_mobility(state):
 	can_push = state
