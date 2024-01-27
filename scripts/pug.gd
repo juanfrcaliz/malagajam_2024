@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 const PUSH_FORCE = 10.0
 var can_push = true
+var have_ball = false
 
 signal interact
 
@@ -33,11 +34,17 @@ func _physics_process(delta):
 		if !$WalkAudio.playing:
 			$WalkAudio.play()
 			
-		%AnimatedSprite2D.play("walk")
+		if have_ball:
+			%AnimatedSprite2D.play("walk_ball")
+		else:
+			%AnimatedSprite2D.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$WalkAudio.stop()
-		%AnimatedSprite2D.play("idle")
+		if have_ball:
+			%AnimatedSprite2D.play("idle_ball")
+		else:
+			%AnimatedSprite2D.play("idle")
 
 	move_and_slide()
 
@@ -58,6 +65,9 @@ func bark():
 		$BarkAudio.play()
 
 func change_mobility(state):
+	if state == false:
+		have_ball = true
+		
 	can_push = state
 	
 func show_ball():
