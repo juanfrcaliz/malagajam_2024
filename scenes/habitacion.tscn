@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://1dudphnwk4yp"]
+
+[ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_8gg54"]
+[ext_resource type="Texture2D" uid="uid://c02m5hmwbp8di" path="res://Assets/Habitacion/detras.png" id="2_icsgp"]
+[ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="3_tu6qb"]
+[ext_resource type="Texture2D" uid="uid://c8jeusi50xvv3" path="res://Assets/Habitacion/delante.png" id="4_a7wf2"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(590, -559)
+
+[node name="Floor" parent="." instance=ExtResource("1_8gg54")]
+position = Vector2(363, 498)
+scale = Vector2(2.66536, 1.2023)
+
+[node name="Floor2" parent="." instance=ExtResource("1_8gg54")]
+position = Vector2(-575, 31)
+rotation = -1.5708
+scale = Vector2(1.21607, -1.04473)
+
+[node name="Floor3" parent="." instance=ExtResource("1_8gg54")]
+position = Vector2(390, 298)
+scale = Vector2(0.76884, 2.9143)
+
+[node name="puerta_salon" parent="." instance=ExtResource("1_8gg54")]
+position = Vector2(1222, 124)
+rotation = 1.5708
+
+[node name="Detras" type="Sprite2D" parent="."]
+position = Vector2(368, 15)
+texture = ExtResource("2_icsgp")
+
+[node name="Pug" parent="." instance=ExtResource("3_tu6qb")]
+position = Vector2(-373, 400)
+scale = Vector2(0.800766, 0.800766)
+
+[node name="Delante" type="Sprite2D" parent="."]
+position = Vector2(367, 14)
+texture = ExtResource("4_a7wf2")
