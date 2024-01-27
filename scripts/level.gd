@@ -12,7 +12,6 @@ func _process(delta):
 
 
 func _on_box_dog_entered():
-	print("entered")
 	$Pug.change_mobility(false)
 
 
