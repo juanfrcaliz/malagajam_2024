@@ -62,6 +62,8 @@ func on_level1_finished():
 	get_node("hab_Delante").hide()
 	get_node("PuertaAbierta").show()
 	get_node("puerta_salon").set_collision_layer_value(1, 0)
+	$BedroomSong.stop()
+	$KitchenSong.play()
 	level_number += 1
 	
 func on_level2_finished():
