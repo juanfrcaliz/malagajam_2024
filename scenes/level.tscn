@@ -1,5 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxqrj3sdavb36"]
-
+[gd_scene load_steps=22 format=3 uid="uid://bxqrj3sdavb36"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
 [ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="1_xw77n"]
@@ -18,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://um860ak0b7ow" path="res://Assets/marco_negro.png" id="15_8uos1"]
 [ext_resource type="Texture2D" uid="uid://bfnxc83xpc6ou" path="res://Assets/Cocina/escalon.png" id="17_dmgwd"]
 [ext_resource type="PackedScene" uid="uid://ckq71lmtparst" path="res://scenes/caja_disfraces.tscn" id="18_u4mdm"]
+[ext_resource type="AudioStream" uid="uid://btkxdoqqr3ak0" path="res://Assets/Sounds/Transitions/transicion_cocina.wav" id="19_86vsw"]
+[ext_resource type="AudioStream" uid="uid://brbavajby5a48" path="res://Assets/Sounds/Transitions/Boxdroop.wav" id="20_0yuyi"]
 [ext_resource type="PackedScene" uid="uid://c2kjfw5i10fp" path="res://scenes/chica.tscn" id="19_2xodp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvob"]
@@ -58,7 +59,7 @@ texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-74.9998, 324)
+position = Vector2(2300, 191)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
@@ -214,14 +215,21 @@ collision_layer = 8
 position = Vector2(166, 495)
 shape = SubResource("RectangleShape2D_6vvob")
 
+[node name="SecondTrans" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2702, -132)
+stream = ExtResource("20_0yuyi")
+[node name="KitchenTransition" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(50, -12)
+stream = ExtResource("19_86vsw")
 [node name="chica" parent="." instance=ExtResource("19_2xodp")]
 position = Vector2(429, 243)
 animation = &"coger_pelota"
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
-[connection signal="finished" from="ToySound" to="." method="_on_toy_sound_finished"]
 [connection signal="box_fall" from="StaticBody2D" to="." method="_on_static_body_2d_box_fall"]
 [connection signal="timeout" from="TutorialCooldown" to="." method="_on_tutorial_cooldown_timeout"]
 [connection signal="costume_box_entered" from="CajaDisfrazFinal" to="." method="_on_caja_disfraz_final_costume_box_entered"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
+[connection signal="finished" from="SecondTrans" to="." method="_on_second_trans_finished"]
+[connection signal="finished" from="KitchenTransition" to="." method="_on_kitchen_transition_finished"]
