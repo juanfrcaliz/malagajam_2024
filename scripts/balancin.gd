@@ -30,7 +30,7 @@ func _on_top_switch_body_entered(body):
 		get_node("seesaw_collision_top").set_collision_layer_value(1, 0)
 		get_node("seesaw_collision_right").set_collision_layer_value(1, 0)
 		get_node("seesaw_collision_left").set_collision_layer_value(1, 1)
-		seesaw_pos = "left"
+		seesaw_pos = "right"
 		$CaidaBalancinSound.play()
 
 func _on_left_switch_body_entered(body):
