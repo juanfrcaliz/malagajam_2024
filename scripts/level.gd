@@ -5,6 +5,7 @@ var tutorial_texts = ["Press A / D to move", "Press R to bark", "Press Space to 
 var tutorial_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$BedroomSong.play()
 	get_node("CajaDisfrazFinal").get_node("Area2D").set_collision_mask_value(1, 0)
 	show_message(tutorial_texts[0])
 	tutorial_index += 1

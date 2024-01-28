@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=24 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c2kjfw5i10fp" path="res://scenes/chica.tscn" id="19_2xodp"]
 [ext_resource type="AudioStream" uid="uid://btkxdoqqr3ak0" path="res://Assets/Sounds/Transitions/transicion_cocina.wav" id="19_86vsw"]
 [ext_resource type="AudioStream" uid="uid://brbavajby5a48" path="res://Assets/Sounds/Transitions/Boxdroop.wav" id="20_0yuyi"]
+[ext_resource type="AudioStream" uid="uid://cte61wpm1f4ua" path="res://Assets/Sounds/Levels/Puguers-Dormitorium_completo.mp3" id="22_dn04n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvob"]
 size = Vector2(192, 144)
@@ -60,7 +61,7 @@ texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-83.9995, 349)
+position = Vector2(2141, 208)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
@@ -227,6 +228,9 @@ stream = ExtResource("19_86vsw")
 [node name="chica" parent="." instance=ExtResource("19_2xodp")]
 position = Vector2(413, 331)
 animation = &"coger_pelota"
+
+[node name="BedroomSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_dn04n")
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8akrrjlh40bl"]
+[gd_scene load_steps=13 format=3 uid="uid://c8akrrjlh40bl"]
 
 [ext_resource type="Texture2D" uid="uid://cq4dklxryynaf" path="res://Assets/Cocina/tabla.png" id="2_k58ov"]
 [ext_resource type="Texture2D" uid="uid://r87ilr13ewq8" path="res://Assets/Cocina/rollito.png" id="3_8bnf4"]
 [ext_resource type="Script" path="res://scripts/balancin.gd" id="3_mdaor"]
+[ext_resource type="AudioStream" uid="uid://ccuk6r2xhpxv6" path="res://Assets/Sounds/Caidadetabla.wav" id="4_0nk25"]
+[ext_resource type="AudioStream" uid="uid://jdkxhvotpb3t" path="res://Assets/Sounds/Balancin.wav" id="4_iprlc"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4nhxp"]
 a = Vector2(-4, -38)
@@ -102,6 +104,12 @@ shape = SubResource("RectangleShape2D_o13xq")
 position = Vector2(25, -6)
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("3_8bnf4")
+
+[node name="CaidaBalancinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0nk25")
+
+[node name="BalacinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iprlc")
 
 [connection signal="area_entered" from="left_switch" to="left_switch" method="_on_left_area_entered"]
 [connection signal="body_entered" from="left_switch" to="." method="_on_left_switch_body_entered"]
