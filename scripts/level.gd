@@ -32,6 +32,7 @@ func _on_box_dog_entered():
 	$ToySound.play()
 	$Pug.change_mobility(false)
 	$Pug.show_ball(true)
+	$chica.play("coger_pelota")
 
 
 func _on_box_dog_exited():
@@ -52,6 +53,9 @@ func transitionLevel():
 
 func on_level1_finished():
 	$KitchenTransition.play()
+	$chica.play("risa_idle")
+	$chica.position.x = $chica.position.x + 130
+	$chica.position.y = $chica.position.y - 230
 	get_node("Pug").show_ball(false)
 	get_node("hab_Delante").hide()
 	get_node("PuertaAbierta").show()
