@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=24 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c2kjfw5i10fp" path="res://scenes/chica.tscn" id="19_2xodp"]
 [ext_resource type="AudioStream" uid="uid://btkxdoqqr3ak0" path="res://Assets/Sounds/Transitions/transicion_cocina.wav" id="19_86vsw"]
 [ext_resource type="AudioStream" uid="uid://brbavajby5a48" path="res://Assets/Sounds/Transitions/Boxdroop.wav" id="20_0yuyi"]
+[ext_resource type="AudioStream" uid="uid://cte61wpm1f4ua" path="res://Assets/Sounds/Levels/Puguers-Dormitorium_completo.mp3" id="22_dn04n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvob"]
 size = Vector2(192, 144)
@@ -60,7 +61,7 @@ texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-83.9995, 349)
+position = Vector2(2141, 208)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
@@ -216,6 +217,13 @@ collision_layer = 8
 position = Vector2(508, 500)
 shape = SubResource("RectangleShape2D_6vvob")
 
+[node name="WinArea2" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea2"]
+position = Vector2(1041, 493)
+shape = SubResource("RectangleShape2D_6vvob")
+
 [node name="SecondTrans" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(2702, -132)
 stream = ExtResource("20_0yuyi")
@@ -226,7 +234,11 @@ stream = ExtResource("19_86vsw")
 
 [node name="chica" parent="." instance=ExtResource("19_2xodp")]
 position = Vector2(413, 331)
-animation = &"coger_pelota"
+frame_progress = 0.0
+metadata/_edit_lock_ = true
+
+[node name="BedroomSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_dn04n")
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
@@ -234,5 +246,6 @@ animation = &"coger_pelota"
 [connection signal="timeout" from="TutorialCooldown" to="." method="_on_tutorial_cooldown_timeout"]
 [connection signal="costume_box_entered" from="CajaDisfrazFinal" to="." method="_on_caja_disfraz_final_costume_box_entered"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
+[connection signal="body_entered" from="WinArea2" to="." method="_on_win_area_2_body_entered"]
 [connection signal="finished" from="SecondTrans" to="." method="_on_second_trans_finished"]
 [connection signal="finished" from="KitchenTransition" to="." method="_on_kitchen_transition_finished"]
