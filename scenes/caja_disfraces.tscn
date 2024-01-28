@@ -7,6 +7,7 @@
 size = Vector2(63.25, 164)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 8
 script = ExtResource("1_hmtyl")
 
 [node name="CajaDeDisfracesTirada" type="Sprite2D" parent="."]

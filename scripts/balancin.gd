@@ -4,6 +4,8 @@ var can_flip : bool = true
 
 var seesaw_pos: String = "top"
 
+signal box_fall
+
 func _ready():
 	get_node("seesaw_top").show()
 	get_node("seesaw_right").hide()
@@ -12,6 +14,12 @@ func _ready():
 	get_node("seesaw_collision_right").set_collision_layer_value(1, 0)
 	get_node("seesaw_collision_left").set_collision_layer_value(1, 0)
 
+func switch_to_right():
+	get_node("seesaw_right").hide()
+	get_node("seesaw_left").show()
+	get_node("seesaw_collision_right").set_collision_layer_value(1, 0)
+	get_node("seesaw_collision_left").set_collision_layer_value(1, 1)
+	seesaw_pos = "right"
 
 func _on_top_switch_body_entered(body):
 	if seesaw_pos == "top" && body.name == "Pug":
@@ -27,15 +35,12 @@ func _on_top_switch_body_entered(body):
 func _on_left_switch_body_entered(body):
 	if seesaw_pos == "left" && can_flip:
 		print(body.velocity)
-		get_node("seesaw_right").hide()
-		get_node("seesaw_left").show()
-		get_node("seesaw_collision_right").set_collision_layer_value(1, 0)
-		get_node("seesaw_collision_left").set_collision_layer_value(1, 1)
-		seesaw_pos = "right"
+		switch_to_right()
 	if body.velocity.y > 20 && not can_flip:
 		#animacion final
 		print('caca')
 		can_flip = true
+		box_fall.emit()
 
 
 func _on_right_switch_body_entered(_body):
