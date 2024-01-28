@@ -1,65 +1,76 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxqrj3sdavb36"]
+[gd_scene load_steps=23 format=3 uid="uid://bxqrj3sdavb36"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
 [ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="1_xw77n"]
 [ext_resource type="Texture2D" uid="uid://c02m5hmwbp8di" path="res://Assets/Habitacion/detras.png" id="2_q6j1k"]
 [ext_resource type="Texture2D" uid="uid://c8jeusi50xvv3" path="res://Assets/Habitacion/delante.png" id="3_mnwwm"]
+[ext_resource type="Texture2D" uid="uid://cwy4cevmmranm" path="res://Assets/Habitacion/puerta abierta.png" id="4_000qc"]
 [ext_resource type="PackedScene" uid="uid://48he5yuyc6fl" path="res://scenes/box.tscn" id="5_hnovt"]
 [ext_resource type="Texture2D" uid="uid://t0pxbd07khio" path="res://Assets/Cocina/cocina fondo.png" id="7_pva7j"]
 [ext_resource type="Texture2D" uid="uid://ciqk4kcvh8pwd" path="res://Assets/Cocina/cocina medio.png" id="8_7ecnt"]
-[ext_resource type="Texture2D" uid="uid://c5a6jpbdu2c8c" path="res://Assets/Cocina/esfera.png" id="10_40r50"]
-[ext_resource type="Texture2D" uid="uid://cq4dklxryynaf" path="res://Assets/Cocina/tabla.png" id="11_fcyq2"]
+[ext_resource type="FontFile" uid="uid://ltmlymqsv2xn" path="res://Assets/Fonts/SingleDay-Regular.ttf" id="11_gt4pf"]
+[ext_resource type="Texture2D" uid="uid://b012o1ctp1sf3" path="res://Assets/Cocina/cocina frente.png" id="12_427wr"]
 [ext_resource type="AudioStream" uid="uid://cvf5rlnxiyl74" path="res://Assets/Sounds/Toy Puggy.wav" id="12_lffml"]
 [ext_resource type="Texture2D" uid="uid://dti3owq87yr8e" path="res://Assets/Cocina/caja de disfraces.png" id="12_nwvpc"]
+[ext_resource type="PackedScene" uid="uid://c8akrrjlh40bl" path="res://scenes/balancin.tscn" id="12_pbrj0"]
+[ext_resource type="PackedScene" uid="uid://bity71mfcms5c" path="res://scenes/esfera.tscn" id="13_37575"]
+[ext_resource type="Texture2D" uid="uid://um860ak0b7ow" path="res://Assets/marco_negro.png" id="15_8uos1"]
+[ext_resource type="Texture2D" uid="uid://bfnxc83xpc6ou" path="res://Assets/Cocina/escalon.png" id="17_dmgwd"]
+[ext_resource type="PackedScene" uid="uid://ckq71lmtparst" path="res://scenes/caja_disfraces.tscn" id="18_u4mdm"]
+[ext_resource type="PackedScene" uid="uid://c2kjfw5i10fp" path="res://scenes/chica.tscn" id="19_2xodp"]
+[ext_resource type="AudioStream" uid="uid://btkxdoqqr3ak0" path="res://Assets/Sounds/Transitions/transicion_cocina.wav" id="19_86vsw"]
+[ext_resource type="AudioStream" uid="uid://brbavajby5a48" path="res://Assets/Sounds/Transitions/Boxdroop.wav" id="20_0yuyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvob"]
+size = Vector2(192, 144)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7mcvw")
 
-[node name="Floor" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(532, 586)
-scale = Vector2(2.42258, 1)
-
 [node name="Floor2" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(-88, 483)
 scale = Vector2(0.207199, 3.51515)
 
 [node name="Floor3" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(-190, 202)
 rotation = 1.5708
 
-[node name="Floor4" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(598, 386)
-scale = Vector2(0.765232, 2.63929)
-
-[node name="Floor5" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(2237, 586)
-scale = Vector2(3, 1)
-
 [node name="puerta_salon" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(1422, 174)
 rotation = 1.5708
-collision_layer = 0
+collision_layer = 1
 
 [node name="hab_Detras" type="Sprite2D" parent="."]
 position = Vector2(573, 107)
 texture = ExtResource("2_q6j1k")
 metadata/_edit_lock_ = true
 
+[node name="PuertaAbierta" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(573, 106)
+texture = ExtResource("4_000qc")
+
 [node name="CocinaFondo" type="Sprite2D" parent="."]
-position = Vector2(2400, 104)
+position = Vector2(2400, 160)
 texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-45.9998, 359)
+position = Vector2(-83.9995, 349)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
 position = Vector2(438, 567)
 
+[node name="Esfera" parent="." instance=ExtResource("13_37575")]
+position = Vector2(3150, 523)
+
 [node name="CocinaMedio" type="Sprite2D" parent="."]
-position = Vector2(2400, 105)
+position = Vector2(2403, 172)
 texture = ExtResource("8_7ecnt")
 metadata/_edit_lock_ = true
 
@@ -68,21 +79,32 @@ position = Vector2(572, 106)
 texture = ExtResource("3_mnwwm")
 metadata/_edit_lock_ = true
 
-[node name="Esfera" type="Sprite2D" parent="."]
-position = Vector2(3192, 382)
-texture = ExtResource("10_40r50")
-
-[node name="Tabla" type="Sprite2D" parent="."]
-position = Vector2(2604, 404)
-texture = ExtResource("11_fcyq2")
-
-[node name="Floor6" parent="." instance=ExtResource("1_687gb")]
-position = Vector2(1834, 372)
-scale = Vector2(0.26632, -0.629808)
-
 [node name="CajaDeDisfraces" type="Sprite2D" parent="."]
-position = Vector2(2981, -283)
+position = Vector2(2855, -207)
 texture = ExtResource("12_nwvpc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_gt4pf")
+theme_override_font_sizes/font_size = 34
+text = "hola"
+horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -93,12 +115,124 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_6463a")
 [node name="ToySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_lffml")
 
+[node name="StaticBody2D" parent="." instance=ExtResource("12_pbrj0")]
+position = Vector2(2509, 577)
+scale = Vector2(10, 10)
+metadata/_edit_lock_ = true
+
+[node name="CocinaFrente" type="Sprite2D" parent="."]
+position = Vector2(2124, 245)
+scale = Vector2(0.642718, 0.642718)
+texture = ExtResource("12_427wr")
+metadata/_edit_lock_ = true
+
+[node name="Floor" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(532, 586)
+scale = Vector2(2.42258, 1)
+
+[node name="Floor4" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(598, 386)
+scale = Vector2(0.765232, 2.63929)
+
+[node name="Floor5" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(2235, 587)
+scale = Vector2(3, 1)
+
+[node name="Floor6" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(1794, 414)
+scale = Vector2(0.236111, 0.355592)
+
+[node name="Floor7" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(2172, 289)
+scale = Vector2(0.75927, -0.811904)
+
+[node name="Floor8" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(1607, 550)
+scale = Vector2(0.127507, 1.27507)
+
+[node name="Floor9" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(3360, 285)
+rotation = 1.5708
+
+[node name="TutorialCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Escalon" type="Sprite2D" parent="."]
+position = Vector2(2879, 431)
+scale = Vector2(0.50276, 0.307877)
+texture = ExtResource("17_dmgwd")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1722.5, 108)
+scale = Vector2(13.5404, 30.4896)
+texture = ExtResource("15_8uos1")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(4702, 111.5)
+scale = Vector2(13.5404, 30.5365)
+texture = ExtResource("15_8uos1")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1393.5, -1623.25)
+scale = Vector2(21.7121, 12.4505)
+texture = ExtResource("15_8uos1")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1478, 1841)
+scale = Vector2(21.7121, 12.4505)
+texture = ExtResource("15_8uos1")
+metadata/_edit_lock_ = true
+
+[node name="Floor10" parent="." instance=ExtResource("1_687gb")]
+visible = false
+position = Vector2(3320, 544)
+scale = Vector2(0.151041, 0.935305)
+
+[node name="CajaDisfrazFinal" parent="." instance=ExtResource("18_u4mdm")]
+visible = false
+position = Vector2(3120, 457)
+
+[node name="WinArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+position = Vector2(508, 500)
+shape = SubResource("RectangleShape2D_6vvob")
+
+[node name="SecondTrans" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2702, -132)
+stream = ExtResource("20_0yuyi")
+
+[node name="KitchenTransition" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(50, -12)
+stream = ExtResource("19_86vsw")
+
+[node name="chica" parent="." instance=ExtResource("19_2xodp")]
+position = Vector2(413, 331)
+animation = &"coger_pelota"
+
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="box_fall" from="StaticBody2D" to="." method="_on_static_body_2d_box_fall"]
+[connection signal="timeout" from="TutorialCooldown" to="." method="_on_tutorial_cooldown_timeout"]
+[connection signal="costume_box_entered" from="CajaDisfrazFinal" to="." method="_on_caja_disfraz_final_costume_box_entered"]
+[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
+[connection signal="finished" from="SecondTrans" to="." method="_on_second_trans_finished"]
+[connection signal="finished" from="KitchenTransition" to="." method="_on_kitchen_transition_finished"]
