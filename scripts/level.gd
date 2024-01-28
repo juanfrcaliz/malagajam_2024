@@ -38,12 +38,12 @@ func _on_box_dog_exited():
 	$Pug.change_mobility(true)
 	
 func transitionLevel():
-	level_number = 1
 	print(level_number)
 	get_node("Pug").set_allow_input(false)
 	if level_number == 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
+		tween.connect("finished", on_level1_finished)
 	if level_number == 1:
 		var tween2 = get_tree().create_tween()
 		tween2.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
