@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2kjfw5i10fp"]
+
+[ext_resource type="Texture2D" uid="uid://uplv2vb4bpau" path="res://Assets/Animations/risa_idle/0208.png" id="1_igg4d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvx1u"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"alarma",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"alarma_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"coger_pelota",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"coger_pelota_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"risa",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_igg4d")
+}],
+"loop": true,
+"name": &"risa_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"triste",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"triste_idle",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rvx1u")
+animation = &"risa_idle"
