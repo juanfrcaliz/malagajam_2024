@@ -38,7 +38,7 @@ func _on_left_switch_body_entered(body):
 		can_flip = true
 
 
-func _on_right_switch_body_entered(body):
+func _on_right_switch_body_entered(_body):
 	if seesaw_pos == "right":
 		get_node("seesaw_right").show()
 		get_node("seesaw_left").hide()

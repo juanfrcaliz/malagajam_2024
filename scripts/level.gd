@@ -8,11 +8,11 @@ func _ready():
 	show_message(tutorial_texts[0])
 	tutorial_index += 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	$MarginContainer2.position = Vector2($Pug.position.x - 120, $Pug.position.y - 100)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func show_message(message):
@@ -30,7 +30,7 @@ func hide_message():
 func _on_box_dog_entered():
 	$ToySound.play()
 	$Pug.change_mobility(false)
-	$Pug.show_ball()
+	$Pug.show_ball(true)
 	transitionLevel()
 
 
@@ -47,7 +47,11 @@ func transitionLevel():
 		get_node("puerta_salon").set_collision_layer_value(1, 0)
 		tween.connect("finished", on_tween_finished)
 	if level_number == 1:
+		var tween = get_tree().create_tween()
+		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
 		get_node("Pug").wear_tutu()
+		get_node("Pug").show_ball(false)
+		tween.connect("finished", on_tween_finished)
 		
 
 func on_tween_finished():

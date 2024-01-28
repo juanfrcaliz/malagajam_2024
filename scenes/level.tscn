@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c8akrrjlh40bl" path="res://scenes/balancin.tscn" id="12_pbrj0"]
 [ext_resource type="PackedScene" uid="uid://bity71mfcms5c" path="res://scenes/esfera.tscn" id="13_37575"]
 [ext_resource type="Texture2D" uid="uid://um860ak0b7ow" path="res://Assets/marco_negro.png" id="15_8uos1"]
-[ext_resource type="Texture2D" uid="uid://47lkimsv525d" path="res://Assets/Cocina/caja de disfraces tirada.png" id="16_l1epn"]
 [ext_resource type="Texture2D" uid="uid://bfnxc83xpc6ou" path="res://Assets/Cocina/escalon.png" id="17_dmgwd"]
+[ext_resource type="PackedScene" uid="uid://ckq71lmtparst" path="res://scenes/caja_disfraces.tscn" id="18_u4mdm"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7mcvw")
@@ -54,7 +54,7 @@ texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(-55.9998, 358)
+position = Vector2(2184, 171)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
@@ -164,12 +164,6 @@ rotation = 1.5708
 wait_time = 2.0
 one_shot = true
 
-[node name="CajaDeDisfracesTirada" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(3115, 437)
-texture = ExtResource("16_l1epn")
-metadata/_edit_lock_ = true
-
 [node name="Escalon" type="Sprite2D" parent="."]
 position = Vector2(2879, 431)
 scale = Vector2(0.50276, 0.307877)
@@ -204,6 +198,9 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(3320, 544)
 scale = Vector2(0.151041, 0.935305)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("18_u4mdm")]
+position = Vector2(3120, 457)
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]

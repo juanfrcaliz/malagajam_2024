@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckq71lmtparst"]
+
+[ext_resource type="Script" path="res://Scripts/caja_disfraces.gd" id="1_hmtyl"]
+[ext_resource type="Texture2D" uid="uid://47lkimsv525d" path="res://Assets/Cocina/caja de disfraces tirada.png" id="2_3tam0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xouew"]
+size = Vector2(63.25, 164)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_hmtyl")
+
+[node name="CajaDeDisfracesTirada" type="Sprite2D" parent="."]
+texture = ExtResource("2_3tam0")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-54, -61, 118, -61, 124, 125, -56, 121, -56, 135, 141, 135, 137, -69, -34, -70)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(87.625, 40)
+shape = SubResource("RectangleShape2D_xouew")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

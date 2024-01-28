@@ -76,8 +76,11 @@ func change_mobility(state):
 		
 	can_push = state
 	
-func show_ball():
-	$Node2D/pelota.show()
+func show_ball(state):
+	if state:
+		$Node2D/pelota.show()
+	else:
+		$Node2D/pelota.hide()
 
 func wear_tutu():
 	tutu = true
