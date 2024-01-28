@@ -32,46 +32,43 @@ func _on_box_dog_entered():
 	$ToySound.play()
 	$Pug.change_mobility(false)
 	$Pug.show_ball(true)
-	if level_number == 0:
-		transitionLevel()
 
 
 func _on_box_dog_exited():
 	$Pug.change_mobility(true)
 	
 func transitionLevel():
+	level_number = 1
 	print(level_number)
+	get_node("Pug").set_allow_input(false)
 	if level_number == 0:
-		# FIRST BOX
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
-		get_node("hab_Delante").hide()
-		get_node("PuertaAbierta").show()
-		get_node("puerta_salon").set_collision_layer_value(1, 0)
-		tween.connect("finished", on_tween_finished)
-
+		tween.connect("finished", on_level1_finished)
 	if level_number == 1:
-		# SECOND BOX
-		#var tween = get_tree().create_tween()
-		#tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
-		get_node("CajaDeDisfraces").queue_free()
-		get_node("Esfera").queue_free()
-		get_node("StaticBody2D").switch_to_right()
-		get_node("CajaDisfrazFinal").show()
-		get_node("CajaDisfrazFinal").set_collision_layer_value(1, 1)
-		get_node("CajaDisfrazFinal").get_node("Area2D").set_collision_mask_value(1, 1)
-		level_number += 1
-		#tween.connect("finished", on_tween_finished)
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
+		tween2.connect("finished", on_level2_finished)
 		
 
-func on_tween_finished():
-	#play right sound
+func on_level1_finished():
+	$KitchenTransition.play()
+	get_node("Pug").show_ball(false)
+	get_node("hab_Delante").hide()
+	get_node("PuertaAbierta").show()
+	get_node("puerta_salon").set_collision_layer_value(1, 0)
 	level_number += 1
-
-func _on_toy_sound_finished():
-	print('terminao')
-	var tween2 = get_tree().create_tween()
-	tween2.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
+	
+func on_level2_finished():
+	$SecondTrans.play()
+	get_node("CajaDeDisfraces").queue_free()
+	get_node("Esfera").queue_free()
+	get_node("StaticBody2D").switch_to_right()
+	get_node("CajaDisfrazFinal").show()
+	get_node("CajaDisfrazFinal").set_collision_layer_value(1, 1)
+	get_node("CajaDisfrazFinal").get_node("Area2D").set_collision_mask_value(1, 1)
+	level_number += 1
+	
 
 func on_hide_message_ended():
 	if tutorial_index < tutorial_texts.size():
@@ -93,5 +90,22 @@ func _on_static_body_2d_box_fall():
 
 
 func _on_win_area_body_entered(body):
-	if body.name == "Pug" && level_number == 3:
-		print('you win!')
+	if body.name == "Pug":
+		if level_number == 0 && body.have_ball:
+			transitionLevel()
+		elif level_number == 3:
+			print('you win!')
+
+
+func _on_kitchen_transition_finished():
+	$KitchenTransition.stop()
+	$Pug.set_allow_input(true)
+	var tween = get_tree().create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
+
+
+func _on_second_trans_finished():
+	$SecondTrans.stop()
+	$Pug.set_allow_input(true)
+	var tween = get_tree().create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
