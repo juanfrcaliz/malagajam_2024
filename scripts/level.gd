@@ -29,10 +29,11 @@ func hide_message():
 
 
 func _on_box_dog_entered():
-	$ToySound.play()
-	$Pug.change_mobility(false)
-	$Pug.show_ball(true)
-	$chica.play("coger_pelota")
+	if !$Pug.have_ball && level_number == 0:
+		$ToySound.play()
+		$Pug.change_mobility(false)
+		$Pug.show_ball(true)
+		$chica.play("coger_pelota")
 
 
 func _on_box_dog_exited():
@@ -96,9 +97,6 @@ func _on_win_area_body_entered(body):
 	if body.name == "Pug":
 		if level_number == 0 && body.have_ball:
 			transitionLevel()
-		elif level_number == 3:
-			print('you win!')
-
 
 func _on_kitchen_transition_finished():
 	$KitchenTransition.stop()
@@ -112,3 +110,8 @@ func _on_second_trans_finished():
 	$Pug.set_allow_input(true)
 	var tween = get_tree().create_tween()
 	tween.tween_property($CanvasLayer/ColorRect, "color:a", 0, 1).set_trans(Tween.TRANS_SINE)
+
+
+func _on_win_area_2_body_entered(body):
+	if level_number == 3:
+		$chica.play("risa")
