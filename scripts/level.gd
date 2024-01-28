@@ -129,4 +129,10 @@ func _on_win_area_2_body_entered(body):
 		$chica.scale = Vector2(1.7, 1.7)
 		$RisaMujer.play()
 		$chica.play("risa")
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property($CanvasLayer/ColorRect, "color:a", 1, 3).set_trans(Tween.TRANS_SINE)
+		tween2.connect("finished", on_game_finished)
 		level_number += 1
+		
+func on_game_finished():
+	get_tree().change_scene_to_file("res://scenes/finalmenu.tscn")

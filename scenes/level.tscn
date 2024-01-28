@@ -241,6 +241,7 @@ volume_db = 3.962
 
 [node name="chica" parent="." instance=ExtResource("19_2xodp")]
 position = Vector2(313, 331)
+animation = &"coger_pelota"
 
 [node name="KitchenSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_t006w")
@@ -251,6 +252,7 @@ stream = ExtResource("22_dn04n")
 
 [node name="RisaMujer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_5mka3")
+volume_db = 2.971
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]
