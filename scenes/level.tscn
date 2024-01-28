@@ -51,9 +51,10 @@ texture = ExtResource("4_000qc")
 [node name="CocinaFondo" type="Sprite2D" parent="."]
 position = Vector2(2400, 160)
 texture = ExtResource("7_pva7j")
+metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(2211, 432)
+position = Vector2(-55.9998, 358)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]
@@ -65,6 +66,7 @@ position = Vector2(3150, 523)
 [node name="CocinaMedio" type="Sprite2D" parent="."]
 position = Vector2(2403, 172)
 texture = ExtResource("8_7ecnt")
+metadata/_edit_lock_ = true
 
 [node name="hab_Delante" type="Sprite2D" parent="."]
 position = Vector2(572, 106)
@@ -72,7 +74,7 @@ texture = ExtResource("3_mnwwm")
 metadata/_edit_lock_ = true
 
 [node name="CajaDeDisfraces" type="Sprite2D" parent="."]
-position = Vector2(2981, -283)
+position = Vector2(2855, -207)
 texture = ExtResource("12_nwvpc")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
@@ -115,11 +117,13 @@ stream = ExtResource("12_lffml")
 [node name="StaticBody2D" parent="." instance=ExtResource("12_pbrj0")]
 position = Vector2(2509, 577)
 scale = Vector2(10, 10)
+metadata/_edit_lock_ = true
 
 [node name="CocinaFrente" type="Sprite2D" parent="."]
 position = Vector2(2124, 245)
 scale = Vector2(0.642718, 0.642718)
 texture = ExtResource("12_427wr")
+metadata/_edit_lock_ = true
 
 [node name="Floor" parent="." instance=ExtResource("1_687gb")]
 visible = false
@@ -132,6 +136,7 @@ position = Vector2(598, 386)
 scale = Vector2(0.765232, 2.63929)
 
 [node name="Floor5" parent="." instance=ExtResource("1_687gb")]
+visible = false
 position = Vector2(2235, 587)
 scale = Vector2(3, 1)
 
@@ -160,14 +165,16 @@ wait_time = 2.0
 one_shot = true
 
 [node name="CajaDeDisfracesTirada" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(3115, 437)
-scale = Vector2(1, 1)
 texture = ExtResource("16_l1epn")
+metadata/_edit_lock_ = true
 
 [node name="Escalon" type="Sprite2D" parent="."]
 position = Vector2(2879, 431)
 scale = Vector2(0.50276, 0.307877)
 texture = ExtResource("17_dmgwd")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1722.5, 108)

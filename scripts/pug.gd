@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -500.0
 const PUSH_FORCE = 10.0
 var can_push = true
 var have_ball = false
+var tutu = false
 
 signal interact
 
@@ -14,6 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	get_node("Node2D/pelota").hide()
+
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -32,16 +34,21 @@ func _physics_process(delta):
 			
 		if !$WalkAudio.playing:
 			$WalkAudio.play()
-			
-		if have_ball:
+		
+		if tutu:
+			%AnimatedSprite2D.play("walk_tutu")
+		elif have_ball:
 			%AnimatedSprite2D.play("walk_ball")
 		else:
 			%AnimatedSprite2D.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$WalkAudio.stop()
-		if have_ball:
+		if tutu:
+			%AnimatedSprite2D.play("idle_tutu")
+		elif have_ball:
 			%AnimatedSprite2D.play("idle_ball")
+
 		else:
 			%AnimatedSprite2D.play("idle")
 
@@ -71,4 +78,6 @@ func change_mobility(state):
 	
 func show_ball():
 	$Node2D/pelota.show()
-	
+
+func wear_tutu():
+	tutu = true
