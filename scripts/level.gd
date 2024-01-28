@@ -42,7 +42,12 @@ func transitionLevel():
 	if level_number == 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
+		get_node("hab_Delante").hide()
+		get_node("PuertaAbierta").show()
+		get_node("puerta_salon").set_collision_layer_value(1, 0)
 		tween.connect("finished", on_tween_finished)
+	if level_number == 1:
+		get_node("Pug").wear_tutu()
 		
 
 func on_tween_finished():
