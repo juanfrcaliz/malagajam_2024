@@ -1,5 +1,4 @@
 [gd_scene load_steps=22 format=3 uid="uid://bxqrj3sdavb36"]
-
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_7mcvw"]
 [ext_resource type="PackedScene" uid="uid://c4rw6vbi63eh6" path="res://scenes/floor.tscn" id="1_687gb"]
 [ext_resource type="PackedScene" uid="uid://bfwtopjmldvdy" path="res://scenes/pug.tscn" id="1_xw77n"]
@@ -20,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ckq71lmtparst" path="res://scenes/caja_disfraces.tscn" id="18_u4mdm"]
 [ext_resource type="AudioStream" uid="uid://btkxdoqqr3ak0" path="res://Assets/Sounds/Transitions/transicion_cocina.wav" id="19_86vsw"]
 [ext_resource type="AudioStream" uid="uid://brbavajby5a48" path="res://Assets/Sounds/Transitions/Boxdroop.wav" id="20_0yuyi"]
+[ext_resource type="PackedScene" uid="uid://c2kjfw5i10fp" path="res://scenes/chica.tscn" id="19_2xodp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvob"]
 size = Vector2(192, 144)
@@ -218,10 +218,11 @@ shape = SubResource("RectangleShape2D_6vvob")
 [node name="SecondTrans" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(2702, -132)
 stream = ExtResource("20_0yuyi")
-
 [node name="KitchenTransition" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(50, -12)
 stream = ExtResource("19_86vsw")
+[node name="chica" parent="." instance=ExtResource("19_2xodp")]
+position = Vector2(542, 115)
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]
 [connection signal="dog_exited" from="Box" to="." method="_on_box_dog_exited"]

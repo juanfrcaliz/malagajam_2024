@@ -428,8 +428,8 @@ unique_name_in_owner = true
 position = Vector2(-8, -4)
 scale = Vector2(0.348148, 0.348148)
 sprite_frames = SubResource("SpriteFrames_32fp3")
-animation = &"walk_tutu"
-frame_progress = 0.306097
+animation = &"idle_ball"
+frame_progress = 0.859367
 metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="MessageCooldown" to="." method="_on_message_cooldown_timeout"]
