@@ -1,7 +1,5 @@
-extends Node
+extends StaticBody2D
 
-signal dog_entered
-signal dog_exited
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,9 +11,6 @@ func _process(_delta):
 	pass
 
 
-func _on_area_2d_body_entered(_body):
-	dog_entered.emit()
-
-
-func _on_area_2d_body_exited(_body):
-	dog_exited.emit()
+func _on_area_2d_body_entered(body):
+	if body.name == "Pug":
+		body.wear_tutu()
