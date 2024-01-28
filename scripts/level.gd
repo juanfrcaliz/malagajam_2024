@@ -5,6 +5,7 @@ var tutorial_texts = ["Press A / D to move", "Press R to bark", "Press Space to 
 var tutorial_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("CajaDisfrazFinal").get_node("Area2D").set_collision_mask_value(1, 0)
 	show_message(tutorial_texts[0])
 	tutorial_index += 1
 
@@ -40,6 +41,7 @@ func _on_box_dog_exited():
 func transitionLevel():
 	print(level_number)
 	if level_number == 0:
+		# FIRST BOX
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
 		get_node("hab_Delante").hide()
@@ -47,11 +49,17 @@ func transitionLevel():
 		get_node("puerta_salon").set_collision_layer_value(1, 0)
 		tween.connect("finished", on_tween_finished)
 	if level_number == 1:
-		var tween = get_tree().create_tween()
-		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
-		get_node("Pug").wear_tutu()
-		get_node("Pug").show_ball(false)
-		tween.connect("finished", on_tween_finished)
+		# SECOND BOX
+		#var tween = get_tree().create_tween()
+		#tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
+		get_node("CajaDeDisfraces").queue_free()
+		get_node("Esfera").queue_free()
+		get_node("StaticBody2D").switch_to_right()
+		get_node("CajaDisfrazFinal").show()
+		get_node("CajaDisfrazFinal").set_collision_layer_value(1, 1)
+		get_node("CajaDisfrazFinal").get_node("Area2D").set_collision_mask_value(1, 1)
+		level_number += 1
+		#tween.connect("finished", on_tween_finished)
 		
 
 func on_tween_finished():
@@ -71,3 +79,17 @@ func on_hide_message_ended():
 func _on_tutorial_cooldown_timeout():
 	hide_message()
 	
+
+func _on_caja_disfraz_final_costume_box_entered():
+	get_node("Pug").wear_tutu()
+	get_node("Pug").show_ball(false)
+	level_number += 1
+
+
+func _on_static_body_2d_box_fall():
+	transitionLevel()
+
+
+func _on_win_area_body_entered(body):
+	if body.name == "Pug" && level_number == 3:
+		print('you win!')
