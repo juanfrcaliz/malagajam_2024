@@ -9,6 +9,9 @@ func _ready():
 	get_node("CajaDisfrazFinal").get_node("Area2D").set_collision_mask_value(1, 0)
 	show_message(tutorial_texts[0])
 	tutorial_index += 1
+	$chica.scale = Vector2(1.7, 1.7)
+	$chica.play("triste")
+	
 
 func _physics_process(_delta):
 	$MarginContainer2.position = Vector2($Pug.position.x - 120, $Pug.position.y - 100)
@@ -34,6 +37,8 @@ func _on_box_dog_entered():
 		$ToySound.play()
 		$Pug.change_mobility(false)
 		$Pug.show_ball(true)
+		$chica.position.x = $chica.position.x + 80
+		$chica.scale = Vector2(0.9, 0.9)
 		$chica.play("coger_pelota")
 
 
@@ -55,9 +60,10 @@ func transitionLevel():
 
 func on_level1_finished():
 	$KitchenTransition.play()
+	$chica.scale = Vector2(1, 1)
 	$chica.play("risa_idle")
-	$chica.position.x = $chica.position.x + 130
-	$chica.position.y = $chica.position.y - 230
+	$chica.position.x = $chica.position.x + 100
+	$chica.position.y = $chica.position.y - 210
 	get_node("Pug").show_ball(false)
 	get_node("hab_Delante").hide()
 	get_node("PuertaAbierta").show()
@@ -87,6 +93,7 @@ func _on_tutorial_cooldown_timeout():
 	
 
 func _on_caja_disfraz_final_costume_box_entered():
+	$ToySound2.play()
 	get_node("Pug").wear_tutu()
 	get_node("Pug").show_ball(false)
 	level_number += 1
@@ -117,4 +124,9 @@ func _on_second_trans_finished():
 
 func _on_win_area_2_body_entered(body):
 	if level_number == 3:
+		$chica.position.x = $chica.position.x + 400
+		$chica.position.y = $chica.position.y + 200
+		$chica.scale = Vector2(1.7, 1.7)
+		$RisaMujer.play()
 		$chica.play("risa")
+		level_number += 1

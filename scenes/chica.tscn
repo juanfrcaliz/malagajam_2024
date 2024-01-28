@@ -2146,7 +2146,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("492_6qu24")
 }],
-"loop": true,
+"loop": false,
 "name": &"risa",
 "speed": 24.0
 }, {
@@ -2615,5 +2615,4 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_rvx1u")
-animation = &"risa"
-frame_progress = 0.951797
+animation = &"triste"
