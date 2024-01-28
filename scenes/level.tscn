@@ -233,7 +233,7 @@ stream = ExtResource("19_86vsw")
 
 [node name="chica" parent="." instance=ExtResource("19_2xodp")]
 position = Vector2(413, 331)
-animation = &"coger_pelota"
+frame_progress = 0.0
 metadata/_edit_lock_ = true
 
 [connection signal="dog_entered" from="Box" to="." method="_on_box_dog_entered"]

@@ -114,4 +114,4 @@ func _on_second_trans_finished():
 
 func _on_win_area_2_body_entered(body):
 	if level_number == 3:
-		print('you win!')
+		$chica.play("risa")
