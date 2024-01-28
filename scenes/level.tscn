@@ -54,7 +54,7 @@ texture = ExtResource("7_pva7j")
 metadata/_edit_lock_ = true
 
 [node name="Pug" parent="." instance=ExtResource("1_xw77n")]
-position = Vector2(2184, 171)
+position = Vector2(-67.9999, 345)
 scale = Vector2(0.788682, 0.788682)
 
 [node name="Box" parent="." instance=ExtResource("5_hnovt")]

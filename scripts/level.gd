@@ -31,7 +31,8 @@ func _on_box_dog_entered():
 	$ToySound.play()
 	$Pug.change_mobility(false)
 	$Pug.show_ball(true)
-	transitionLevel()
+	if level_number == 0:
+		transitionLevel()
 
 
 func _on_box_dog_exited():
@@ -46,7 +47,7 @@ func transitionLevel():
 		get_node("PuertaAbierta").show()
 		get_node("puerta_salon").set_collision_layer_value(1, 0)
 		tween.connect("finished", on_tween_finished)
-	if level_number == 1:
+	elif level_number == 1:
 		var tween = get_tree().create_tween()
 		tween.tween_property($CanvasLayer/ColorRect, "color:a", 1, 1).set_trans(Tween.TRANS_SINE)
 		get_node("Pug").wear_tutu()
